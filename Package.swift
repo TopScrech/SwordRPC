@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.10
 
 import PackageDescription
 
@@ -8,15 +8,18 @@ let package = Package(
         .library(
             name: "SwordRPC",
             targets: ["SwordRPC"]
-        )
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/IBM-Swift/BlueSocket.git", from: "2.0.2")
     ],
+
     targets: [
         .target(
             name: "SwordRPC",
-            dependencies: ["Socket"]
+            dependencies: [
+                .product(name: "Socket", package: "bluesocket")
+            ]
         )
     ]
 )
